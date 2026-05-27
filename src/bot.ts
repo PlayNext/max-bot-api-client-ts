@@ -82,7 +82,7 @@ export class Bot<Ctx extends Context = Context> extends Composer<Ctx> {
     this.pollingIsStarted = false;
   };
 
-  private handleUpdate = async (update: Update) => {
+  public handleUpdate = async (update: Update) => {
     const updateId = `${update.update_type}:${update.timestamp}`;
     debug(`Processing update ${updateId}`);
 

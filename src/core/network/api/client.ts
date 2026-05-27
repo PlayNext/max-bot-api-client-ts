@@ -88,10 +88,15 @@ const buildUrl = (baseUrl: string, path?: ReqOptions['path']): string => {
   let url = baseUrl;
 
   if (path) {
+    //console.log("buildUrl(), path", path);
     Object.keys(path)?.forEach((key) => {
-      const regexp = new RegExp(`{${key}}`, 'g');
-      const value = path[key].toString();
-      url = url.replace(regexp, value);
+      //console.log("\tkey: "+key);
+      const value = path[key]?.toString();
+      //console.log("\tvalue: "+value);
+      if ( value ) {
+        const regexp = new RegExp(`{${key}}`, 'g');
+        url = url.replace(regexp, value);
+      }
     });
   }
 
